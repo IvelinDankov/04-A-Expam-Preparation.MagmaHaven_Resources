@@ -17,41 +17,42 @@
    [X] Add modular routers
 3. Setup handlebars
    [X] Install handlebars `npm i express-handlebars`
-   [ ] Add view engine
-   [ ] Set view directory
-   [ ] Set view engine
-   [ ] Add home view
-   [ ] Add layout
-   [ ] Add partials dir
-   [ ] Add dynamic title
+   [X] Add view engine
+   [X] Set view directory
+   [X] Set view engine
+   [X] Add home view
+   [X] Add layout
+   [X] Add partials dir
+   [X] Add dynamic title
 4. Add database
-   [ ] Install mongoose `npm i mongoose`
-   [ ] Connect to local db
-   [ ] Add user model
+   [X] Install mongoose `npm i mongoose`
+   [X] Connect to local db
+   [X] Add user model
 5. Register
-   [ ] Fix navigation links
-   [ ] Add template
-   [ ] Add auth controller
-   [ ] Render page on get
-   [ ] Post action
-   [ ] Add auth service register
-   [ ] Install bcrypt `npm i bcrypt`
-   [ ] Hash password
-   [ ] Check for password mismatch
+   [X] Fix navigation links
+   [X] Add template
+   [X] Add auth controller
+   [X] Render page on get
+   [X] Post action
+   [X] Add auth service register
+   [X] Install bcrypt `npm i bcrypt`
+   [X] Hash password
+   [X] Check for password mismatch
    [ ] Check if user exists
 6. Login
-   [ ] Install jsonwebtoken `npm i jsonwebtoken`
+   [X] Install jsonwebtoken `npm i jsonwebtoken`
    [ ] Convert jsonwebtoken to promise based lib (optionally)
    [ ] Add typescript declaration documentation (optionally)
-   [ ] Install cookie-parser `npm i cookie-parser`
-   [ ] Add cookie parser middleware
-   [ ] Add login page
-   [ ] Add login post action
-   [ ] Add authService login method
-   [ ] Generate jwt
-   [ ] Return jwt with http only cookie
+   [X] Install cookie-parser `npm i cookie-parser`
+   [X] Add cookie parser middleware
+   [X] Add login page
+   [X] Add login post action
+   [X] Add authService login method
+   [X] Generate jwt
+   [X] Return jwt with http only cookie
    [ ] Auto login after register
 7. Logout
+   [ ] 
 8. Authorization
    [ ] Add auth middleware
    [ ] Add isAuth middleware
