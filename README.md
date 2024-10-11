@@ -13,8 +13,8 @@
    [X] Install `npm i express`
    [X] Add static resources
    [X] Configure static middleware
-   [ ] Add body parser
-   [ ] Add modular routers
+   [X] Add body parser
+   [X] Add modular routers
 3. Setup handlebars
    [X] Install handlebars `npm i express-handlebars`
    [ ] Add view engine
