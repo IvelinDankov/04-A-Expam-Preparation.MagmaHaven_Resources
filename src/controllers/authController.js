@@ -1,17 +1,16 @@
 import { Router } from "express";
 import authService from "../services/authService.js";
+import { getErrorMessage } from "../util/errorUtils.js";
 
-const authController = Router();
-
-authService;
+const router = Router();
 
 // TODO: make here.
 
-authController.get("/register", (req, res) => {
-  res.render("auth/register", { title: "register" });
+router.get("/register", (req, res) => {
+  res.render("auth/register");
 });
 
-authController.post("/register", async (req, res) => {
+router.post("/register", async (req, res) => {
   const { username, email, password, rePass } = req.body;
 
   if (password !== rePass) {
@@ -19,35 +18,41 @@ authController.post("/register", async (req, res) => {
   }
 
   try {
-    await authService.register(username, email, password);
-    res.redirect("auth/login");
-  } catch (error) {
-    res.render("auth/register", { title: "Register Page", username, email });
+    await authService.register(username, email, password, rePass);
+
+    const token = await authService.login(email, password);
+
+    res.cookie("auth", token, { httpOnly: true });
+
+    res.redirect("/");
+  } catch (err) {
+    const error = getErrorMessage(err);
+    res.render("auth/register", { username, email, error });
   }
 });
 
-authController.get("/login", (req, res) => {
-  res.render("auth/login", { title: "Login Page" });
+router.get("/login", (req, res) => {
+  res.render("auth/login");
 });
 
-authController.post("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
     const token = await authService.login(email, password);
 
-    res.cookie("auth", token);
+    res.cookie("auth", token, { httpOnly: true });
     res.redirect("/");
-  } catch (error) {
-    console.error(error.message);
-    
+  } catch (err) {
+    const error = getErrorMessage(err);
+    res.render("auth/login", { error });
   }
 });
 
-authController.get('/logout', (req, res) => {
-  res.clearCookie('auth');
+router.get("/logout", (req, res) => {
+  res.clearCookie("auth");
 
-  res.redirect('/');
+  res.redirect("/");
 });
 
-export default authController;
+export default router;

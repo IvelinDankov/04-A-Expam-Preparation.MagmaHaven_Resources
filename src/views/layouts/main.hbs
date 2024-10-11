@@ -1,11 +1,14 @@
-
 <html lang="en">
 
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{title}}</title>
+
+    <title>
+      {{!-- {{title}} --}}
+    </title>
+
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
 
@@ -15,18 +18,36 @@
         <img src="/images/logo.avif" class="logo" />
         <ul>
           <li><a href="/">Home</a></li>
-          <li><a href="#">Search</a></li>
-          <li><a href="#">All Volcanoes</a></li>
-          <li><a href="#">Create Volcano Wiki</a></li>
-          <li><a href="/auth/login">Login</a></li>
-          <li><a href="/auth/register">Register</a></li>
-          <li><a href="/auth/logout">Logout</a></li>
+          <li><a href="/search">Search</a></li>
+          <li><a href="/catalog">All Volcanoes</a></li>
+
+          {{! user }}
+          {{#if isAuthenticated}}
+            <li><a href="/create">Create Volcano Wiki</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+            {{! guest }}
+          {{else}}
+            <li><a href="/auth/login">Login</a></li>
+            <li><a href="/auth/register">Register</a></li>
+          {{/if}}
+
         </ul>
+       
+          <em style="color: black;">{{username}}</em>
+       
+
       </nav>
     </header>
 
     <main>
-        {{{body}}}
+      {{#if error}}
+        <div>
+          <div class="errorContainer">
+            <p>{{error}}</p>
+          </div>
+        </div>
+      {{/if}}
+      {{{body}}}
     </main>
 
     <footer>

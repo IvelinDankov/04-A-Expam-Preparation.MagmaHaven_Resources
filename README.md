@@ -52,7 +52,7 @@
    [X] Return jwt with http only cookie
    [ ] Auto login after register
 7. Logout
-   [ ] 
+   [X] Clear cookie
 8. Authorization
    [ ] Add auth middleware
    [ ] Add isAuth middleware

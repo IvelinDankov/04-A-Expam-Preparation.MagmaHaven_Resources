@@ -9,7 +9,7 @@ router.use(homeController);
 router.use("/auth", authController);
 
 router.all("*", (req, res) => {
-  res.render("home/404", { title: "404 Page" });
+  res.render("home/404");
 });
 
 export default router;

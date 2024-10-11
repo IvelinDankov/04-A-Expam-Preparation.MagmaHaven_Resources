@@ -2,10 +2,17 @@ import User from "../models/User.js";
 
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import "dotenv/config";
+import { SECRET } from "../util/constants.js";
 
-const register = (username, email, password) => {
-  User.create({ username, email, password });
+const register = async(username, email, password) => {
+  const user = await User.findOne({ $or: [{ username }, { email }] })
+  
+  if (user) {
+    throw new Error("User exist");
+    
+  }
+
+  return User.create({ username, email, password });
 };
 
 const login = async (email, password) => {
@@ -15,23 +22,22 @@ const login = async (email, password) => {
     throw new Error("User does not exist!");
   }
 
-  const name = await bcrypt.compare(password, user.password);
+  const isValid = await bcrypt.compare(password, user.password);
 
-  if (!name) {
+  if (!isValid) {
     throw new Error("Password does not match!");
   }
 
   const payload = {
     _id: user._id,
-    email: user.email,
+    username: user.username,
+    email: user.email
   };
 
-  const token = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: "2h" });
+  const token = jwt.sign(payload, SECRET, { expiresIn: "2h" });
 
   return token;
 };
-
-
 
 export default {
   register,
