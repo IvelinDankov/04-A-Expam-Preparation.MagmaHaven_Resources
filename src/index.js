@@ -7,15 +7,12 @@ import { authMiddleware } from "./middlewares/authMiddleware.js";
 
 const app = express();
 
-
-
 // DB Mongoose
 const url = "mongodb://localhost:27017";
 // FIXME: dbName
 connect(url, { dbName: "volcanoes" })
   .then(() => console.log("DB connected - :)"))
   .catch(() => console.log("DB Fail - (:"));
-
 
 app.engine(
   "hbs",

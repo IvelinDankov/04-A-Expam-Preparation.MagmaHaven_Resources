@@ -6,7 +6,7 @@
     Add start scripts
   - [X] Add initial folder structure
   - [X] Change module type
-   [ ] Add debugging
+  - [ ] Add debugging
   - [X] Add env variable file
   - [X] Install and configure dotenv `npm i dotenv`
 2. Setup Express
@@ -38,11 +38,11 @@
   - [X] Install bcrypt `npm i bcrypt`
   - [X] Hash password
   - [X] Check for password mismatch
-   [ ] Check if user exists
+  - [ ] Check if user exists
 6. Login
   - [X] Install jsonwebtoken `npm i jsonwebtoken`
-   [ ] Convert jsonwebtoken to promise based lib (optionally)
-   [ ] Add typescript declaration documentation (optionally)
+  - [ ] Convert jsonwebtoken to promise based lib (optionally)
+  - [ ] Add typescript declaration documentation (optionally)
   - [X] Install cookie-parser `npm i cookie-parser`
   - [X] Add cookie parser middleware
   - [X] Add login page
@@ -50,15 +50,15 @@
   - [X] Add authService login method
   - [X] Generate jwt
   - [X] Return jwt with http only cookie
-   [ ] Auto login after register
+  - [ ] Auto login after register
 7. Logout
   - [X] Clear cookie
 8. Authorization
-   [ ] Add auth middleware
-   [ ] Add isAuth middleware
+   [X] Add auth middleware
+  - [ ] Add isAuth middleware
 9. Error Handling
-   [ ] Add error notification
-   [ ] Add error message util
-   [ ] Handle register errors
-   [ ] Handle login errors
+  - [ ] Add error notification
+  - [ ] Add error message util
+  - [ ] Handle register errors
+  - [ ] Handle login errors
 10. Dynamic Navigation

@@ -8,8 +8,8 @@ export function authMiddleware(req, res, next) {
   }
 
   try {
-    const decodedToken = jwt.verify(token, SECRET,);
-    
+    const decodedToken = jwt.verify(token, SECRET);
+
     // const user = {
     //   _id : decodedToken._id,
     //   email :decodedToken.email,
@@ -17,18 +17,26 @@ export function authMiddleware(req, res, next) {
 
     // }
 
-    req.user = decodedToken
-    req.username = decodedToken.username
+    req.user = decodedToken;
+    req.username = decodedToken.username;
     req.isAuthenticated = true;
+    res._id = decodedToken._id
     res.locals.isAuthenticated = true;
-    res.locals.email = decodedToken.email
-    res.locals.username = decodedToken.username
-      
-       next();
+    res.locals.email = decodedToken.email;
+    res.locals.username = decodedToken.username;
+
+    next();
   } catch (error) {
-    res.clearCookie('auth')
-    return res.redirect('/auth/login')
+    res.clearCookie("auth");
+    return res.redirect("/auth/login");
+  }
+}
+
+export const isAuth = (req, res, next) => {
+  const isAuthenticated = req.isAuthenticated;
+  if (!isAuthenticated) {
+    throw new Error("User is not Authenticated!");
   }
 
-
-}
+  next();
+};

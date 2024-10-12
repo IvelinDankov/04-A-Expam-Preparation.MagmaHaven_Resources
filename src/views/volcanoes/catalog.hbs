@@ -1,0 +1,30 @@
+<section class="volcano-catalog">
+  <h1 id="title"><span>Volcano</span> Catalog</h1>
+    {{#if volcanoes}}
+  <div class="item-list">
+    {{#each volcanoes}}
+
+      <div class="volcano">
+    <div class="volcano-img">
+      <img src="{{imageUrl}}" />
+    </div>
+    <div class="volcano-info">
+      <h1></h1>
+      <p><span>Location: {{location}}</span></p>
+      <p><span>Volcano Type: {{typeVolcano}} </span> </p>
+    </div>
+
+    <a href="/volcanoes/{{_id}}/details" class="btn-details">Details</a>
+  </div>
+    {{/each}}
+    {{else}}
+  </div>
+  <div class="no-volcano">
+    <p>There are no volcano found yet!</p>
+  </div>
+
+  {{/if}}
+
+
+
+</section>

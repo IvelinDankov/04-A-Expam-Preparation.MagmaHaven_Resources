@@ -1,16 +1,68 @@
+{{#if isSearch}}
+  <section class="volcano-search">
+    <h1>Search</h1>
 
-        <!-- In case of error, you should display div with class "errorContainer" -->
-        <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
-        <!-- <div>
+    <form class="search-form"  method="get">
+      <input
+        type="text"
+        class="search-volcano"
+        name="name"
+        placeholder="Search by Name..."
+        value="{{filter.name}}"
+      />
+      <select id="type" name="volcanoType">
+        <option value="Supervolcanoes">Supervolcanoes</option>
+        <option value="Submarine">Submarine</option>
+        <option value="Subglacial">Subglacial</option>
+        <option value="Mud">Mud</option>
+        <option value="Stratovolcanoes">Stratovolcanoes</option>
+        <option value="Shield">Shield</option>
+      </select>
+      <button type="submit" class="btn-search">Search</button>
+    </form>
+
+    {{#each allVolcanoes}}
+      <div class="search-result">
+        <div class="search-list">
+          <div class="volcano">
+            <div class="volcano-img">
+              <img src="{{imageUrl}}" />
+            </div>
+            <div class="volcano-info">
+              <h1>{{name}} </h1>
+              <p><span>Location: </span>{{location}}</p>
+              <p><span>Volcano Type: </span>{{typeVolcano}}</p>
+            </div>
+
+            <a href="/volcanoes/{{_id}}/details" class="btn-details">Details</a>
+          </div>
+        </div>
+
+      </div>
+
+    {{/each}}
+
+    <div class="no-match">
+      <p>No match was found!</p>
+    </div>
+  </section>
+
+  <!-- In case of error, you should display div with class "errorContainer" -->
+  <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
+  <!-- <div>
             <div class="errorContainer">
                 <p>Error</p>
             </div>
         </div> -->
-        
-        <div class="content">
-            <h1>Discover the Beauty of the Volcanoes</h1>
-            <p>A volcano is an opening in the earth's surface that allows magma, volcanic ash and gases to escape. They
-                are generally found where tectonic plates come together or separate, but they can also occur in the
-                middle of plates due to volcanic hotspots.</p>
-            <a href="/catalog" class="catalog">Catalog</a>
-        </div>
+{{else}}
+
+  <div class="content">
+    <h1>Discover the Beauty of the Volcanoes</h1>
+    <p>A volcano is an opening in the earth's surface that allows magma,
+      volcanic ash and gases to escape. They are generally found where tectonic
+      plates come together or separate, but they can also occur in the middle of
+      plates due to volcanic hotspots.</p>
+    <a href="/volcanoes/catalog" class="catalog">Catalog</a>
+  </div>
+
+{{/if}}
